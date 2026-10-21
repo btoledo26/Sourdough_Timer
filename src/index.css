@@ -1,14 +1,28 @@
 :root {
-  --text: #6b6375; /*choose colors*/
-  --bg: #fff;
+  --buttercream: #fff4c2;
+  --honey-yellow: #f7d774;
+  --honey-gold: #e8b95b;
+  --vanilla-ivory: #fff8e7;
+  --bee-charcoal: #393630;
+  --cocoa-brown: #a98267;
+  --sage-pollen: #d5e8c3;
+  --blossom-pink: #f2d9e8;
+  --sky-blue: #d6e8f5;
+
+  --background: var(--buttercream);
+  --surface: #ffffff;
+  --text: var(--bee-charcoal);
+  --primary: var(--honey-yellow);
+  --accent: var(--honey-gold);
+  --border: #e6d9c4;
 
   /*choose a font*/
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color: var(--text);
-  background: var(--bg);
+  background: var(--background);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 

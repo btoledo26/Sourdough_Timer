@@ -1,44 +1,79 @@
 import { useState } from "react";
-import heroImg from "./assets/hero.png";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
 import "./App.css";
 
 function Header() {
   return <div className="header">Sourdough Timer</div>;
 }
 
+function IncrementFoldsButton({ count, onClick }) {
+  return <button onClick={onClick}>+</button>;
+}
+
+function DecrementFoldsButton({ count, onClick }) {
+  return <button onClick={onClick}>-</button>;
+}
+
+function TimerFace() {
+  return null;
+}
+
+function TimerControls() {
+  return null;
+}
+
 function Timer() {
+  const [foldCount, setFoldCount] = useState(0);
+  const increment = () => setFoldCount((foldCount) => foldCount + 1);
+  const decrement = () => setFoldCount((foldCount) => foldCount - 1);
+
   return (
     <article className="timer">
-      <>beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</>
+      <div className="timerheader">
+        <input type="text" placeholder="Enter timer name" />
+        <div>
+          Stretch & Folds: {foldCount}
+          <IncrementFoldsButton foldCount={foldCount} onClick={increment} />
+          <DecrementFoldsButton foldCount={foldCount} onClick={decrement} />
+        </div>
+      </div>
+      <div className="timerbody">
+        <TimerFace />
+        <TimerControls />
+      </div>
     </article>
   );
 }
 
-function TimerList() {
+function TimerList({ timerList }) {
   return (
-    <article className="timerlist">
-      <Timer />
-      <Timer />
-      <Timer />
-    </article>
+    <div className="timerlist">
+      {timerList.map((id) => (
+        <Timer key={id} />
+      ))}
+    </div>
   );
 }
 
-function AddTimerButton() {
+function AddTimerButton({ onClick }) {
   return (
-    <>
-      <button className="addtimerbutton">+</button>
-    </>
+    <button className="addtimerbutton" onClick={onClick}>
+      +
+    </button>
   );
 }
 
+/*change ids to be generated with randomUUID*/
 function MainContainer() {
+  const [timerList, setTimerList] = useState([]);
+  const appendTimer = () => {
+    const newId = timerList.length + 1;
+    setTimerList([...timerList, newId]);
+  };
+
   return (
     <div className="maincontainer">
-      <AddTimerButton />
-      <TimerList />
+      <AddTimerButton onClick={appendTimer} />
+      <TimerList timerList={timerList} />
     </div>
   );
 }

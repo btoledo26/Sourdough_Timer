@@ -4,7 +4,8 @@ body {
 
 .header {
   background-color: var(--honey-yellow);
-  padding: 5px;
+  padding: 15px;
+  font-size: 1.5em;
 }
 
 .maincontainer {
@@ -13,7 +14,6 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-
   width: 100%;
   max-width: 900px;
   box-sizing: border-box;
@@ -27,6 +27,7 @@ body {
   background-color: var(--honey-yellow);
   border: 2.5px solid var(--text);
   border-radius: 999px;
+  font-size: 1.1em;
 }
 
 .addtimerbutton:active {
@@ -51,4 +52,14 @@ body {
   border: 2.5px solid var(--text);
   border-radius: 12px;
   background-color: var(--vanilla-ivory);
+}
+
+.timerheader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.timerface {
+  /*make 3 columns 3 rows*/
+  background-color: red;
 }

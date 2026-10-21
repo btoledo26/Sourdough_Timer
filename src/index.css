@@ -29,6 +29,6 @@
   /*adjust this for desktop resizing,
   default styles will apply to all phones automatically*/
   @media (min-width: 1024px) {
-    font-size: 16px;
+    font-size: 20px;
   }
 }

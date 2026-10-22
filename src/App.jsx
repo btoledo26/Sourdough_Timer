@@ -29,6 +29,8 @@ function TimerControls() {
   return null;
 }
 
+/*TODO: Add notes dropdown/toggle to bottom of each timer card,
+        Also add Edit Timer button to modify name and delete timer */
 function TimerCard() {
   const [foldCount, setFoldCount] = useState(0);
   const increment = () => setFoldCount((foldCount) => foldCount + 1);
@@ -40,8 +42,8 @@ function TimerCard() {
       <div className="timerheader">
         <input type="text" placeholder="Enter timer name" />
         Stretch & Folds: {foldCount}
-        <IncrementFoldsButton foldCount={foldCount} onClick={increment} />
         <DecrementFoldsButton foldCount={foldCount} onClick={decrement} />
+        <IncrementFoldsButton foldCount={foldCount} onClick={increment} />
       </div>
       <div className="timerbody">
         <TimerFace />

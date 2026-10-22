@@ -17,6 +17,14 @@ function TimerFace() {
   return null;
 }
 
+function PlayPauseButton() {
+  return null;
+}
+
+function ResetTimerButton() {
+  return null;
+}
+
 function TimerControls() {
   return null;
 }
@@ -24,7 +32,8 @@ function TimerControls() {
 function Timer() {
   const [foldCount, setFoldCount] = useState(0);
   const increment = () => setFoldCount((foldCount) => foldCount + 1);
-  const decrement = () => setFoldCount((foldCount) => foldCount - 1);
+  const decrement = () =>
+    setFoldCount((foldCount) => (foldCount > 0 ? foldCount - 1 : 0));
 
   return (
     <article className="timer">
@@ -64,8 +73,11 @@ function AddTimerButton({ onClick }) {
 
 /*change ids to be generated with randomUUID*/
 function MainContainer() {
+  const [showTimers, setShowTimers] = useState(false);
   const [timerList, setTimerList] = useState([]);
+
   const appendTimer = () => {
+    setShowTimers(showTimers === false ? !showTimers : showTimers);
     const newId = timerList.length + 1;
     setTimerList([...timerList, newId]);
   };
@@ -73,7 +85,7 @@ function MainContainer() {
   return (
     <div className="maincontainer">
       <AddTimerButton onClick={appendTimer} />
-      <TimerList timerList={timerList} />
+      {showTimers && <TimerList timerList={timerList} />}
     </div>
   );
 }

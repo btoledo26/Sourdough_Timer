@@ -57,6 +57,27 @@ body {
 .timerheader {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.timerheader > div > button {
+  background-color: var(--honey-yellow);
+  border: 2px solid var(--text);
+  border-radius: 999px;
+  width: 30px;
+  height: 30px;
+  font-size: 1em;
+  margin-left: 10px;
+  box-sizing: border-box;
+}
+
+.timerheader > div > button:active {
+  background-color: var(--honey-gold);
+}
+
+.timerheader > div > button:nth-child(2) {
+  padding-bottom: 2px;
+  transform: translateY(-1px);
 }
 
 .timerface {

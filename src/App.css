@@ -80,7 +80,7 @@ body {
 }
 
 .timerheader > button:nth-child(3) {
-  padding-bottom: 5px;
+  padding-bottom: 2px;
 }
 
 .timerface {

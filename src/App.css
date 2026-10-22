@@ -47,7 +47,7 @@ body {
   background-color: var(--honey-yellow);
 }
 
-.timer {
+.timercard {
   padding: 8px;
   border: 2.5px solid var(--text);
   border-radius: 12px;
@@ -56,11 +56,14 @@ body {
 
 .timerheader {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 30px 30px;
   gap: 20px;
+  margin-right: 4px;
 }
 
-.timerheader > div > button {
+.timerheader > button {
   background-color: var(--honey-yellow);
   border: 2px solid var(--text);
   border-radius: 999px;
@@ -71,13 +74,12 @@ body {
   box-sizing: border-box;
 }
 
-.timerheader > div > button:active {
+.timerheader > button:active {
   background-color: var(--honey-gold);
 }
 
-.timerheader > div > button:nth-child(2) {
-  padding-bottom: 2px;
-  transform: translateY(-1px);
+.timerheader > button:nth-child(3) {
+  padding-bottom: 5px;
 }
 
 .timerface {

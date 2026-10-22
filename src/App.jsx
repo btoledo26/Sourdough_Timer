@@ -29,21 +29,19 @@ function TimerControls() {
   return null;
 }
 
-function Timer() {
+function TimerCard() {
   const [foldCount, setFoldCount] = useState(0);
   const increment = () => setFoldCount((foldCount) => foldCount + 1);
   const decrement = () =>
     setFoldCount((foldCount) => (foldCount > 0 ? foldCount - 1 : 0));
 
   return (
-    <article className="timer">
+    <article className="timercard">
       <div className="timerheader">
         <input type="text" placeholder="Enter timer name" />
-        <div>
-          Stretch & Folds: {foldCount}
-          <IncrementFoldsButton foldCount={foldCount} onClick={increment} />
-          <DecrementFoldsButton foldCount={foldCount} onClick={decrement} />
-        </div>
+        Stretch & Folds: {foldCount}
+        <IncrementFoldsButton foldCount={foldCount} onClick={increment} />
+        <DecrementFoldsButton foldCount={foldCount} onClick={decrement} />
       </div>
       <div className="timerbody">
         <TimerFace />
@@ -57,7 +55,7 @@ function TimerList({ timerList }) {
   return (
     <div className="timerlist">
       {timerList.map((id) => (
-        <Timer key={id} />
+        <TimerCard key={id} />
       ))}
     </div>
   );

@@ -111,7 +111,7 @@ body {
 }
 
 .play-button {
-  padding-bottom: 4px;
+  padding-bottom: 3px;
   padding-left: 8px;
 }
 
@@ -119,29 +119,17 @@ body {
   font-size: 20px;
 }
 
-.time-inputs,
-.timer-display {
-  display: flex;
-  align-items: center;
-  gap: 0;
-}
-
-.timer-display {
-  height: 35px;
-  padding: 19px 0 19px 0;
-}
-
 .timer-colon {
   font-size: 45px;
   font-weight: bold;
 }
 
-.timer-display > .timer-colon {
-  transform: translateY(-3px);
+#timer-display > .timer-colon {
+  transform: translateY(-2px);
 }
 
-.time-inputs > .timer-colon {
-  transform: translateY(-3px);
+#time-inputs > .timer-colon {
+  transform: translateY(2px);
 }
 
 .time-inputs > input {
@@ -163,18 +151,54 @@ body {
   color: var(--text);
 }
 
-.time-strings {
-  font-size: 50px;
-  width: 2ch;
+#timer-display > span {
+  font-size: 45px;
   color: var(--text);
 }
 
-.time-inputs > input::-webkit-inner-spin-button,
-.time-inputs > input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.timer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 50px;
 }
 
-.time-inputs > input:focus {
-  background-color: var(--honey-yellow);
+.timer-fields {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 4px;
+  height: 40px;
+  padding-left: 12px;
+}
+
+.timer-fields span,
+.timer-fields input {
+  box-sizing: border-box;
+  text-align: center;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.timer-fields span {
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.timer-fields input {
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.timer-fields input {
+  width: 55px;
+  min-width: 55px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
 }

@@ -150,7 +150,7 @@ function Timer() {
   return (
     <article className="timerbody">
       {isRunning ? (
-        <div className="timer-display">
+        <div id="timer-display" className="timer-fields">
           <span className="time-strings">
             {String(Math.floor(remainingMS / 3600000)).padStart(2, "0")}
           </span>
@@ -167,7 +167,7 @@ function Timer() {
           </span>
         </div>
       ) : (
-        <div className="time-inputs">
+        <div id="time-inputs" className="timer-fields">
           <input
             type="text"
             maxLength={2}

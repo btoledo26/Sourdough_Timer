@@ -207,34 +207,65 @@ function Timer() {
   );
 }
 
-/*TODO: Add notes dropdown/toggle to bottom of each timer card,
-        Also add Edit Timer button to modify name and delete timer */
-function TimerCard() {
+function DeleteTimerButton({ id, onDelete }) {
+  return (
+    <>
+      <button className="delete-timer-button" onClick={() => onDelete(id)}>
+        &times;
+      </button>
+    </>
+  );
+}
+
+function TimerCard({ id, onDelete }) {
+  const [isEditing, setIsEditing] = useState(false);
   const [foldCount, setFoldCount] = useState(0);
   const increment = () => setFoldCount((foldCount) => foldCount + 1);
   const decrement = () =>
     setFoldCount((foldCount) => (foldCount > 0 ? foldCount - 1 : 0));
 
+  const toggleEditing = () => {
+    setIsEditing((prev) => !prev);
+  };
+
   return (
     <article className="timercard">
-      <div className="timerheader">
-        <input type="text" placeholder="Enter timer name" />
-        Stretch & Folds: {foldCount}
-        <DecrementFoldsButton onClick={decrement} />
-        <IncrementFoldsButton onClick={increment} />
+      <div className="edit-timer-div">
+        <button
+          className={`edit-timer-button ${isEditing ? "editing" : ""}`}
+          onClick={toggleEditing}
+        >
+          ✐
+        </button>
       </div>
-      <Timer />
+
+      <div className="timer-content">
+        <div className="timerheader">
+          <div className={isEditing ? "delete-visible" : "delete-hidden"}>
+            <DeleteTimerButton id={id} onDelete={onDelete}></DeleteTimerButton>
+          </div>
+          <input type="text" placeholder="Timer Name" readOnly={!isEditing} />
+          <div className="stretchCounter">
+            Stretch & Folds: <span className="fold-count">{foldCount}</span>
+            <DecrementFoldsButton onClick={decrement} />
+            <IncrementFoldsButton onClick={increment} />
+          </div>
+        </div>
+        <Timer />
+      </div>
     </article>
   );
 }
 
-function TimerList({ timerList }) {
+function TimerList({ timerList, onDelete }) {
   return (
-    <div className="timerlist">
-      {timerList.map((id) => (
-        <TimerCard key={id} />
-      ))}
-    </div>
+    timerList.length > 0 && (
+      <div className="timerlist">
+        {timerList.map((id) => (
+          <TimerCard key={id} id={id} onDelete={onDelete} />
+        ))}
+      </div>
+    )
   );
 }
 
@@ -248,19 +279,23 @@ function AddTimerButton({ onClick }) {
 
 /*change ids to be generated with randomUUID*/
 function MainContainer() {
-  const [showTimers, setShowTimers] = useState(false);
   const [timerList, setTimerList] = useState([]);
 
   const appendTimer = () => {
-    setShowTimers(showTimers === false ? !showTimers : showTimers);
-    const newId = timerList.length + 1;
-    setTimerList([...timerList, newId]);
+    const newId = crypto.randomUUID();
+    setTimerList((prevTimers) => [...prevTimers, newId]);
+  };
+
+  const deleteTimer = (id) => {
+    setTimerList((prevTimers) =>
+      prevTimers.filter((timerId) => timerId !== id),
+    );
   };
 
   return (
     <div className="maincontainer">
       <AddTimerButton onClick={appendTimer} />
-      {showTimers && <TimerList timerList={timerList} />}
+      <TimerList timerList={timerList} onDelete={deleteTimer} />
     </div>
   );
 }

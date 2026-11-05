@@ -117,7 +117,7 @@ function Timer() {
 
   function SetUpAlarmSound() {
     if (!audioRef.current) {
-      audioRef.current = new Audio("public/audio/AlarmSound.wav");
+      audioRef.current = new Audio("/audio/AlarmSound.wav");
     }
 
     audioRef.current.load();

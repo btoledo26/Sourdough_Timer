@@ -21,18 +21,23 @@ function Timer() {
   const [remainingMS, setRemainingMS] = useState(0);
   const initialEndTimeRef = useRef(null); //the time the timer should end, used to reset timer
   const endTimeRef = useRef(null); //the time the timer should end
+  const audioRef = useRef(null);
 
   useEffect(() => {
     if (!isRunning) return;
 
-    /*if not running, calculate remaining time and set it
-      this is for when the timer is paused, it will adjust the timer end point if user changes timer vals*/
     const updateTimer = () => {
       const remainingTime = Math.max(0, endTimeRef.current - Date.now());
       setRemainingMS(remainingTime);
 
       if (remainingTime === 0) {
         setIsRunning(false);
+
+        if (audioRef.current) {
+          audioRef.current.play().catch((err) => {
+            console.error("Mobile audio playback blocked:", err);
+          });
+        }
       }
     };
 
@@ -43,6 +48,8 @@ function Timer() {
   }, [isRunning]);
 
   function StartTimer() {
+    SetUpAlarmSound();
+
     if (remainingMS > 0) {
       endTimeRef.current = Date.now() + remainingMS;
     } else {
@@ -90,6 +97,11 @@ function Timer() {
     endTimeRef.current = Date.now() + duration;
     setRemainingMS(duration); // Restore the duration captured when the timer was started
     setIsRunning(true); //ensures restart even when paused
+
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
   }
 
   function UpdateTimer(newHours, newMinutes, newSeconds) {
@@ -101,6 +113,21 @@ function Timer() {
 
     setRemainingMS(durationMS);
     initialEndTimeRef.current = durationMS;
+  }
+
+  function SetUpAlarmSound() {
+    if (!audioRef.current) {
+      audioRef.current = new Audio("public/audio/AlarmSound.wav");
+    }
+
+    audioRef.current.load();
+    audioRef.current
+      .play()
+      .then(() => {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      })
+      .catch((err) => console.log("Failed to set up audio:", err));
   }
 
   function HandleInputOnChange(e, unit) {

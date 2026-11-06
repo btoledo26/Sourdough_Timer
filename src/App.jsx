@@ -123,6 +123,7 @@ function Timer() {
     }
 
     audioRef.current.load();
+    audioRef.current.volume = 0;
     audioRef.current
       .play()
       .then(() => {
@@ -130,6 +131,8 @@ function Timer() {
         audioRef.current.currentTime = 0;
       })
       .catch((err) => console.log("Failed to set up audio:", err));
+
+    audioRef.current.volume = 1;
   }
 
   function HandleInputOnChange(e, unit) {

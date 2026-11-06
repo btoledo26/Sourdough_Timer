@@ -227,7 +227,7 @@ function Timer() {
         className={isRunning ? "pause-button" : "play-button"}
         onClick={ToggleTimer}
       >
-        {isRunning ? "⏸" : "▶"}
+        {isRunning ? "| |" : "▶"}
       </button>
       <button className="reset-button" onClick={ResetTimer}>
         ↺

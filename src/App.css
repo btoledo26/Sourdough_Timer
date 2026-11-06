@@ -431,4 +431,20 @@ body {
   .addtimerbutton {
     color: var(--text);
   }
+
+  .addtimerbutton:hover {
+    background-color: var(--honey-yellow);
+  }
+
+  .stretchCounter > button:hover {
+    background-color: var(--honey-yellow);
+  }
+
+  .timerbody > button:hover {
+    background-color: var(--honey-yellow);
+  }
+
+  .edit-timer-button:hover {
+    background-color: var(--honey-yellow);
+  }
 }

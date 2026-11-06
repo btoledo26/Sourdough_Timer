@@ -345,6 +345,10 @@ body {
     gap: 10px;
   }
 
+  .timerbody {
+    column-gap: 10px;
+  }
+
   .edit-button {
     grid-area: edit;
   }
@@ -373,11 +377,13 @@ body {
   .stretchCounter > button {
     width: 35px;
     height: 35px;
+    color: var(--text);
   }
 
   .timerbody > button {
     width: 45px;
     height: 45px;
+    color: var(--text);
   }
 
   .timerlist {
@@ -407,5 +413,9 @@ body {
 
   #timer-display {
     margin-bottom: 10px;
+  }
+
+  .addtimerbutton {
+    color: var(--text);
   }
 }

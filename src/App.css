@@ -359,6 +359,7 @@ body {
 
   .delete-button {
     grid-area: delete;
+    color: var(--text);
   }
 
   .stretchCounter {

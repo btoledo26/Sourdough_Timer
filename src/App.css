@@ -451,4 +451,9 @@ body {
   .play-button {
     padding-left: 8px;
   }
+
+  .edit-timer-button:active,
+  .edit-timer-button.editing {
+    background-color: var(--honey-gold);
+  }
 }

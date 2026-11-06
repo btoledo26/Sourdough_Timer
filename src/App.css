@@ -383,7 +383,7 @@ body {
   }
 
   .stretchCounter > button:nth-child(3) {
-    padding-bottom: 0px;
+    padding-bottom: 4px;
   }
 
   .stretchCounter > button {
@@ -446,5 +446,9 @@ body {
 
   .edit-timer-button:hover {
     background-color: var(--honey-yellow);
+  }
+
+  .play-button {
+    padding-left: 8px;
   }
 }
